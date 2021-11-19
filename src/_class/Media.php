@@ -12,15 +12,15 @@ class Media
         return $this;
     }
 
-    public function firstFile()
+    public function first()
     {
         return @Arr::first($this->media['media'])['file'];
     }
 
-    public function firstThumb()
-    {
-        return @Arr::first($this->media['media'])['thumb_image'];
-    }
+//    public function firstThumb()
+//    {
+//        return @Arr::first($this->media['media'])['thumb_image'];
+//    }
 
     public function files()
     {
@@ -31,12 +31,12 @@ class Media
             ->toArray();
     }
 
-    public function thumbs()
-    {
-        return collect($this->media['media'])
-            ->map(function ($item) {
-                return $item['thumb_image'];
-            })
-            ->toArray();
-    }
+//    public function thumbs()
+//    {
+//        return collect($this->media['media'])
+//            ->map(function ($item) {
+//                return $item['thumb_image'];
+//            })
+//            ->toArray();
+//    }
 }
