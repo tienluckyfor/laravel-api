@@ -67,7 +67,7 @@ if (!isset($con)) {
     }
 }
 
-require_once 'Media.php';
+require_once __DIR__.'/Media.php';
 $media = new Media();
 view()->share('media', $media);
 
