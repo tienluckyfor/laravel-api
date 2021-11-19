@@ -1,6 +1,6 @@
 {
     "name": "codeby/laravel-api",
-    "description": "Fully Restfull API Support",
+    "description": "RestFul API for Development and Production",
     "type": "library",
     "keywords": [
         "laravel-api",
