@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    {{--    @include('laravel-api::seo')--}}
+</head>
+<body>
+    @php
+        $test = $http->get('/test')->data();
+        dd($test);
+    @endphp
+</body>
+</html>

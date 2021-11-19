@@ -1,0 +1,37 @@
+{
+    "name": "codeby/laravel-api",
+    "description": "Fully Restfull API Support",
+    "type": "library",
+    "keywords": [
+        "laravel-api",
+        "codeby",
+        "laravel",
+        "php"
+    ],
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tien Nguyen",
+            "email": "tien.luckyfor@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Codeby\\LaravelApi\\": "src/"
+        }
+      },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "\\Codeby\\LaravelApi\\APIServiceProvider"
+        ],
+        "aliases": {
+          "LaravelApi": "Codeby\\LaravelApi\\LaravelApi"
+        }
+      }
+    }
+}
