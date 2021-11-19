@@ -1,13 +1,11 @@
 <?php
-$isRunning = false;
-
+if (request()->segment(1) != 'sites') {
+    return;
+}
 function getViewToken()
 {
     $theme = request()->server('THEME');
     $token = request()->server('TOKEN');
-    if(request()->segment(1) == 'sites'){
-        $isRunning = true;
-    }
     if (!$theme && request()->segment(1) == 'sites') {
         $theme = request()->segment(2);
         $_SERVER['_THEME'] = $theme;
@@ -23,7 +21,7 @@ function getViewToken()
     $base_url = $theme ? "" : $view;
     return [$view, $token, $base_url];
 }
-if(!$isRunning) return;
+
 function setSeo($title = null, $description = null, $image = null)
 {
     if ($title) {
