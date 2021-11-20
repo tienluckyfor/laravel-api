@@ -17,11 +17,6 @@ class Media
         return @Arr::first($this->media['media'])['file'];
     }
 
-//    public function firstThumb()
-//    {
-//        return @Arr::first($this->media['media'])['thumb_image'];
-//    }
-
     public function files()
     {
         return collect($this->media['media'])
@@ -30,13 +25,4 @@ class Media
             })
             ->toArray();
     }
-
-//    public function thumbs()
-//    {
-//        return collect($this->media['media'])
-//            ->map(function ($item) {
-//                return $item['thumb_image'];
-//            })
-//            ->toArray();
-//    }
 }

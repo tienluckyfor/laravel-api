@@ -14,4 +14,4 @@
 <meta property="og:description" content="{{@$seo['description']}}">
 <link rel="canonical" href="{{@$config->url}}">
 <meta property="og:url" content="{{@$config->url}}">
-<link rel="shortcut icon" href="{{@$media->set($con['icon'])->firstFile()}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{@$media->set($con['icon'])->first()}}" type="image/x-icon">

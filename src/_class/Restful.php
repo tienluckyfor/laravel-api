@@ -72,6 +72,74 @@ class Restful
         }
     }
 
+    public function post($path, $query = [])
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+            $request = new \GuzzleHttp\Psr7\Request('POST', $this->api . $path);
+            $response = $client->send($request, [
+                'form_params'   => $query,
+                'headers' => [
+                    'Accept'        => 'application/json',
+                    'Authorization' => "Bearer {$this->token}"
+                ]
+            ]);
+            $this->content = $response->getBody()->getContents();
+            return $this;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            return $this->_errorHandle($e);
+        }
+    }
+
+    public function delete($path, $query = [])
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+            $request = new \GuzzleHttp\Psr7\Request('DELETE', $this->api . $path);
+            $response = $client->send($request, [
+                'form_params'   => $query,
+                'headers' => [
+                    'Accept'        => 'application/json',
+                    'Authorization' => "Bearer {$this->token}"
+                ]
+            ]);
+            $this->content = $response->getBody()->getContents();
+            return $this;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            return $this->_errorHandle($e);
+        }
+    }
+
+    public function put($path, $query = [])
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+            $request = new \GuzzleHttp\Psr7\Request('PUT', $this->api . $path);
+            $response = $client->send($request, [
+                'form_params'   => $query,
+                'headers' => [
+                    'Accept'        => 'application/json',
+                    'Authorization' => "Bearer {$this->token}"
+                ]
+            ]);
+            $this->content = $response->getBody()->getContents();
+            return $this;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
+            return $this->_errorHandle($e);
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            return $this->_errorHandle($e);
+        }
+    }
 
     public function data()
     {
@@ -81,7 +149,6 @@ class Restful
             return null;
         }
     }
-
 
     public function system()
     {
