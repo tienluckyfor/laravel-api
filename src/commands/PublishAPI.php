@@ -45,7 +45,7 @@ class PublishAPI extends Command
 
     public function handle()
     {
-        $this->copyFile('codeby.stub', config_path(), 'codeby.php');
+        $this->copyFile('codeby.php', config_path(), 'codeby.php');
         $this->copyFile('.env', resource_path('views/sites/demo-site'), '.env');
         $this->copyFile('index.blade.php', resource_path('views/sites/demo-site'), 'index.blade.php');
         $this->copyFile('user-page.blade.php', resource_path('views/sites/demo-site'), 'user-page.blade.php');
