@@ -52,7 +52,7 @@ class PublishAPI extends Command
 
         $this->info('Generating autoload files');
         $this->composer->dumpOptimized();
-        $this->info('Enjoy Codeby API at: '.url('/sites/demo-site/demo-page'));
+        $this->info('Enjoy at: '.url('/sites/demo-site'));
     }
 
     public static function createFile($path, $fileName, $contents)
