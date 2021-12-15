@@ -26,7 +26,7 @@ function viewCache($token, $view_path)
 }
 
 Route::any('sites/{theme}/{view?}/{any?}', function ($theme, $view = 'index') {
-    $view_path = "sites/$theme/$view";
+    $view_path = "sites.$theme.$view";
 //    $_SERVER['_THEME'] = $theme;
 //    try {
 //        require_once __DIR__.'/../_class/DotEnv.php';

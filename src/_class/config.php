@@ -18,7 +18,7 @@ function getViewToken()
         }
     }
     $view = "/sites/$theme";
-    $base_url = $theme ? "" : $view;
+    $base_url = request()->server('THEME') ? "" : $view;
     return [$view, $token, $base_url];
 }
 
@@ -56,7 +56,11 @@ view()->share('config', $config);
 view()->share('http', $http);
 if (!isset($con)) {
     try {
+        \Illuminate\Support\Facades\Log::channel('single')->info('1', []);
+
         $res = $http->get('/configs/1', ['_system' => true])->json();
+        \Illuminate\Support\Facades\Log::channel('single')->info('2', []);
+
         $con = $res['data'];
         view()->share('con', $con);
         $sys = (object)$res['_system'];
@@ -72,7 +76,8 @@ $media = new Media();
 view()->share('media', $media);
 
 try {
-    setSeo($con['title'], $con['description'], $media->set($con['image'])->firstFile());
+//    dd($media, $con['image']);
+    setSeo($con['title'], $con['description'], $media->set($con['image'])->first());
 } catch (Exception $e) {
     setSeo(config('codeby.seo_title'), config('codeby.seo_description'), config('codeby.seo_image'));
 }
