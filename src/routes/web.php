@@ -44,7 +44,7 @@ Route::get('/{view?}/{any?}', function ($view = 'index') {
     $theme = request()->server('THEME');
     $token = request()->server('TOKEN');
     if ($theme && $token) {
-        $view_path = "sites/$theme/$view";
+        $view_path = "sites.$theme.$view";
         if (!View::exists($view_path)) {
             abort(404);
         }
