@@ -1,5 +1,5 @@
 <?php
-if (request()->segment(1) != 'sites') {
+if (request()->segment(1) != 'sites' && !request()->server('THEME')) {
     return;
 }
 function getViewToken()
