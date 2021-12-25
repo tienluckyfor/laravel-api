@@ -2,11 +2,11 @@
 if (request()->segment(1) != 'sites' && !request()->server('THEME')) {
     return;
 }
-/*function getViewToken()
+function getViewToken()
 {
     $theme = request()->server('THEME');
     $token = request()->server('TOKEN');
-    if (!$theme && request()->segment(1) == 'sites') {
+    if (request()->segment(1) == 'sites') {
         $theme = request()->segment(2);
         $_SERVER['_THEME'] = $theme;
         try {
@@ -20,9 +20,9 @@ if (request()->segment(1) != 'sites' && !request()->server('THEME')) {
     $view = "/sites/$theme";
     $base_url = request()->server('THEME') ? "" : $view;
     return [$view, $token, $base_url];
-}*/
+}
 
-function getViewToken()
+function getViewToken1()
 {
     $theme = request()->server('THEME');
     $_theme = @$_SERVER['_THEME'];
