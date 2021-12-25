@@ -10,9 +10,10 @@ function getViewToken()
         $theme = request()->segment(2);
         $_SERVER['_THEME'] = $theme;
         try {
-            require_once __DIR__ . '/DotEnv.php';
-            (new DotEnv(resource_path() . '/views/sites/' . $theme . '/.env'))->load();
-            $token = getenv('TOKEN');
+            require_once __DIR__ . '/ReadEnv.php.php';
+            $path = resource_path() . '/views/sites/' . $theme . '/.env';
+            $env = ReadEnv::load($path);
+            $token = $env['TOKEN'];
             $_SERVER['_TOKEN'] = $token;
         } catch (Exception $e) {
         }
