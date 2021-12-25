@@ -2,7 +2,7 @@
 if (request()->segment(1) != 'sites' && !request()->server('THEME')) {
     return;
 }
-function getViewToken()
+/*function getViewToken()
 {
     $theme = request()->server('THEME');
     $token = request()->server('TOKEN');
@@ -20,6 +20,17 @@ function getViewToken()
     $view = "/sites/$theme";
     $base_url = request()->server('THEME') ? "" : $view;
     return [$view, $token, $base_url];
+}*/
+
+function getViewToken()
+{
+    $theme = request()->server('THEME');
+    $_theme = @$_SERVER['_THEME'];
+    $view = $theme ? "/sites/$theme" : "/sites/$_theme";
+    $base_url = $theme ? "" : $view;
+    $token = request()->server('TOKEN');
+    $_token = @$_SERVER['_TOKEN'];
+    return [$view, $token ?? $_token, $base_url];
 }
 
 function setSeo($title = null, $description = null, $image = null)
