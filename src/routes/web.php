@@ -1,7 +1,8 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', function(){
+Route::get('test', function () {
     return view('laravel-api::test');
 
 //echo 'Test';
@@ -27,13 +28,13 @@ function viewCache($token, $view_path)
 
 Route::any('sites/{theme}/{view?}/{any?}', function ($theme, $view = 'index') {
     $view_path = "sites.$theme.$view";
-//    $_SERVER['_THEME'] = $theme;
-//    try {
-//        require_once __DIR__.'/../_class/DotEnv.php';
-//        (new DotEnv(resource_path() . '/views/sites/' . $theme . '/.env'))->load();
-//        $_SERVER['_TOKEN'] = getenv('TOKEN');
-//    } catch (Exception $e) {
-//    }
+    $_SERVER['_THEME'] = $theme;
+    try {
+        require_once __DIR__.'/../_class/DotEnv.php';
+        (new DotEnv(resource_path() . '/views/sites/' . $theme . '/.env'))->load();
+        $_SERVER['_TOKEN'] = getenv('TOKEN');
+    } catch (Exception $e) {
+    }
     if (!View::exists($view_path)) {
         abort(404);
     }

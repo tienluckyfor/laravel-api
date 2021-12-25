@@ -50,17 +50,14 @@ $config = (object)[
     'api_url'  => config('codeby.api_url'),
     'base_url' => $base_url,
 ];
+//dd($config);
 require_once __DIR__ . '/Restful.php';
 $http = new Restful($config->api_url, $config->token);
 view()->share('config', $config);
 view()->share('http', $http);
 if (!isset($con)) {
     try {
-        \Illuminate\Support\Facades\Log::channel('single')->info('1', []);
-
         $res = $http->get('/configs/1', ['_system' => true])->json();
-        \Illuminate\Support\Facades\Log::channel('single')->info('2', []);
-
         $con = $res['data'];
         view()->share('con', $con);
         $sys = (object)$res['_system'];
@@ -71,12 +68,11 @@ if (!isset($con)) {
     }
 }
 
-require_once __DIR__.'/Media.php';
+require_once __DIR__ . '/Media.php';
 $media = new Media();
 view()->share('media', $media);
 
 try {
-//    dd($media, $con['image']);
     setSeo($con['title'], $con['description'], $media->set($con['image'])->first());
 } catch (Exception $e) {
     setSeo(config('codeby.seo_title'), config('codeby.seo_description'), config('codeby.seo_image'));
