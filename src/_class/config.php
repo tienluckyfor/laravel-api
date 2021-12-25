@@ -10,7 +10,7 @@ function getViewToken()
         $theme = request()->segment(2);
         $_SERVER['_THEME'] = $theme;
         try {
-            require_once __DIR__ . '/ReadEnv.php.php';
+            require_once __DIR__ . '/ReadEnv.php';
             $path = resource_path() . '/views/sites/' . $theme . '/.env';
             $env = ReadEnv::load($path);
             $token = $env['TOKEN'];
