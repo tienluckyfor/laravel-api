@@ -30,9 +30,11 @@ Route::any('sites/{theme}/{view?}/{any?}', function ($theme, $view = 'index') {
     $view_path = "sites.$theme.$view";
     $_SERVER['_THEME'] = $theme;
     try {
-        require_once __DIR__.'/../_class/DotEnv.php';
-        (new DotEnv(resource_path() . '/views/sites/' . $theme . '/.env'))->load();
-        $_SERVER['_TOKEN'] = getenv('TOKEN');
+        require_once __DIR__ . '/../_class/ReadEnv.php';
+        $path = resource_path() . '/views/sites/' . $theme . '/.env';
+//        require_once __DIR__.'/../_class/DotEnv.php';
+//        (new DotEnv(resource_path() . '/views/sites/' . $theme . '/.env'))->load();
+        $_SERVER['_TOKEN'] = $path['TOKEN'];
     } catch (Exception $e) {
     }
     if (!View::exists($view_path)) {

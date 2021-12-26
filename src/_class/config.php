@@ -6,6 +6,7 @@ function getViewToken()
 {
     $theme = request()->server('THEME');
     $token = request()->server('TOKEN');
+    $base_url = '';
     if (request()->segment(1) == 'sites') {
         $theme = request()->segment(2);
         $_SERVER['_THEME'] = $theme;
@@ -15,23 +16,13 @@ function getViewToken()
             $env = ReadEnv::load($path);
             $token = $env['TOKEN'];
             $_SERVER['_TOKEN'] = $token;
+            $base_url =  "/sites/$theme";
         } catch (Exception $e) {
         }
     }
     $view = "/sites/$theme";
-    $base_url = request()->server('THEME') ? "" : $view;
+//    $base_url = request()->server('THEME') ? "" : $view;
     return [$view, $token, $base_url];
-}
-
-function getViewToken1()
-{
-    $theme = request()->server('THEME');
-    $_theme = @$_SERVER['_THEME'];
-    $view = $theme ? "/sites/$theme" : "/sites/$_theme";
-    $base_url = $theme ? "" : $view;
-    $token = request()->server('TOKEN');
-    $_token = @$_SERVER['_TOKEN'];
-    return [$view, $token ?? $_token, $base_url];
 }
 
 function setSeo($title = null, $description = null, $image = null)
